@@ -46,3 +46,14 @@ class BagTiles:
     def put(self, tiles):
         self.tiles.extend(tiles)
 
+  # def initial_tiles(self):
+   #     total = []
+     
+     #   bag = BagTiles()
+      #  initial_tiles = {'A':11,'E':11,'O':8,'I':5,'S':5,'N':4,'L':3,'R':4,'U':4,'T':3,'D':4,'G':1,'C':3,'B':1,'M':1,'P':1,'H':1,'?':1}
+      #  for letters, amount in initial_tiles.items():
+     #       for _ in range(amount):
+      #          for x in bag.tiles:
+         #           if x.letter == letters:
+               #         total.append(x)
+    
