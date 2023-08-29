@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3] - 2023-08-29
+
+### Added
+
+Player
+He starts his hand with the 7 tiles in the bag. You can also exchange shares for tokens using the exchange method.
+Test Players.
+When creating a player, check if he has 7 tiles in his hand.
+Check that a player's chip exchange does not change their hand or the number of chips in their bag.
+BagTiles now wraps all tiles with the correct value.
+I also added in "models" all the tetras with their corresponding values.
+
 ## [0.0.2] - 2023-08-28
 
 ### Added
