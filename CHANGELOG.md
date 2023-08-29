@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5] - 2023-08-29
+
+### Added
+
+This adds new features to the "board" class, validates placed words based on outer cells, and the ability to place tiles on the board.
+These additions plus their respective tests were what I did.
+
 ## [0.0.4] - 2023-08-29
 
 ### Added
