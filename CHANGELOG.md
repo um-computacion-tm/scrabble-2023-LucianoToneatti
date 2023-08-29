@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2023-08-29
+
+### Added
+
+I made changes to the "player" folder to improve it and redefine old functions with new ones.
+Added the ability to get tiles from the bag, swap tiles, and calculate score based on placed word cells.
+
 ## [0.0.3] - 2023-08-29
 
 ### Added
