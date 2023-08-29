@@ -17,7 +17,7 @@ I create the "board.py" folder and inside it I made the "board" class. It also c
 
 Create the class and define the "Player" class in a folder named "player.py", which represents a player in the game. The class has attribute tiles that store the letters available to the player.
 
-Define a class called "ScrabbleGame" in the "scrabble.py" folder. This represents the game in its entirety. The class contains attributes for the board, the bag of letters, and a list of players.  
+Define a class called "ScrabbleGame" in the "scrabble.py" folderr. This represents the game in its entirety. The class contains attributes for the board, the bag of letters, and a list of players.  
 
 Create the correspond tests.
 
