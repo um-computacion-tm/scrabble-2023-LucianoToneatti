@@ -7,18 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.1] - 2023-08-28
-
-### Added
-
-Create the classes "Tile" and "BagTiles".
-
-Inside the "Tile" class we define the variables "letter" and "value".
-
-Inside the "BagTiles" class and give each letter a value.
-
-Create methods "take" and "put" in the class "BagTiles" and create the correspond tests.
-
 ## [0.0.2] - 2023-08-28
 
 ### Added
@@ -32,6 +20,19 @@ Create the class and define the "Player" class in a folder named "player.py", wh
 Define a class called "ScrabbleGame" in the "scrabble.py" folder. This represents the game in its entirety. The class contains attributes for the board, the bag of letters, and a list of players.  
 
 Create the correspond tests.
+
+## [0.0.1] - 2023-08-28
+
+### Added
+
+Create the classes "Tile" and "BagTiles".
+
+Inside the "Tile" class we define the variables "letter" and "value".
+
+Inside the "BagTiles" class and give each letter a value.
+
+Create methods "take" and "put" in the class "BagTiles" and create the correspond tests.
+
 
 
 
