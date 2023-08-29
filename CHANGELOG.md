@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.0.6] - 2023-08-29
+
+### Added
+
+Create a new folder called "dictionary.py" and a folder called "test_dictionary.py".
+For an upcoming commit, define all words and misswords.
+
 ## [0.0.5] - 2023-08-29
 
 ### Added
