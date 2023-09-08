@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.7] - 2023-09-7
+
+### Added
+
+Create a new attribute for the "Scrabble" class called "spin". "turn" will count the total turns of the game.
+Added 2 new methods for the "Scrabble" class called "playing" and "next_turn". "playing" will only return true in order to end the game and "next turn" will increase the attribute of the turn by 1.
+Add the "main" function. This will be the interface of the game and for now it doesn't do many things.
+
+
+## [0.0.6] - 2023-09-5
+
+### Added
 
 Create a PR and see CircleCI in action
 
