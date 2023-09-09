@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.8] - 2023-09-8
+
+###  Added
+
+Add new function and tests for the "next_turn" method for the "Scrabble" class
+Added a new attribute for the "Scrabble" class called "current_player". This attribute will show who the player is this turn.
+
 ## [0.0.7] - 2023-09-7
 
 ### Added
