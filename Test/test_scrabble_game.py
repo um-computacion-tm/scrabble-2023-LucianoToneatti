@@ -16,13 +16,11 @@ class TestScrabble(unittest.TestCase):
         game = Scrabble(2)
         game.next_turn()
         self.assertEqual(game.current_player,game.players[0])
-    def test_next_turn_when_game_is_not_the_first(self):
-        game = Scrabble(2)
+    def test_next_turn_when_game_is_not_the_first_and_is_last(self):
+        game = Scrabble(2)    # Test when game is not the first
         game.current_player = game.players[0]
         game.next_turn()
-        self.assertEqual(game.current_player, game.players[1])
-    def test_next_turn_when_game_is_last(self):
-        game = Scrabble(2)
+        self.assertEqual(game.current_player, game.players[1])    # Test when game is last
         game.current_player = game.players[1]
         game.next_turn()
         self.assertEqual(game.current_player, game.players[0])
