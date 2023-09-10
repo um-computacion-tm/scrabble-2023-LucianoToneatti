@@ -1,6 +1,7 @@
 import unittest
 from game.scrabble import Scrabble
 from game.player import Player
+from game.board import Board
 
 class TestScrabble(unittest.TestCase):
     def test_scrabble(self):
