@@ -21,26 +21,21 @@ class TestCalculateWordValue(unittest.TestCase):
         value = board.calculate_word_value(word)
         self.assertEqual(value,5)
 
+    def _test_with_multiplier(self, multiplier_type, expected_value):
+        board = Board()
+        word = [
+            Cell(letter=Tile('C',1)),
+            Cell(letter=Tile('A',1)),
+            Cell(letter=Tile('S',2), multiplier=2, multiplier_type=multiplier_type),
+            Cell(letter=Tile('A',1))
+        ]
+        value = board.calculate_word_value(word)
+        self.assertEqual(value, expected_value)    
     def test_with_letter_multiplayer(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1)),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='letter'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,7)
+        self._test_with_multiplier('letter', 7)    
     def test_with_word_multiplayer(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1)),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='word'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,10)
+        self._test_with_multiplier('word', 10)
+
     def test_with_word_and_letter_multiplayer(self):
         board = Board()
         word = [

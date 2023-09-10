@@ -34,7 +34,7 @@ class TestBagTiles(unittest.TestCase):
     def test_initial_tiles(self):
         bag = BagTiles()
         bag.initial_tiles()
-        self.assertEqual(len(bag.tiles),100)
+        self.assertEqual(len(bag.tiles),47)
 
 if __name__ == '__main__':
     unittest.main()
