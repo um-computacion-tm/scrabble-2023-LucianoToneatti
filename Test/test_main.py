@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 from main import ScrabbleGame
-
 class TestScrabbleGame(unittest.TestCase):    
     @patch('builtins.input', side_effect=['3'])
     @patch('sys.stdout', new_callable=StringIO)

@@ -1,21 +1,20 @@
 from game.scrabble import Scrabble
-class ScrabbleGame:
-     
+
+class ScrabbleGame: 
+
     def __init__(self):
-        self.player_count = self.get_player_count()    
-    
-    def is_valid_player_count(self, player_count):
-        return 2 <= player_count <= 4    
-    def get_player_count(self):
-        while True:
-            try:
-                player_count = int(input('Cantidad de jugadores: '))
-                if self.is_valid_player_count(player_count):
+        self.player_count = self.get_valid_player_count()    
+    def get_valid_player_count(self):
+            while True:
+                player_count = self.get_player_input()
+                if 2 <= player_count <= 4:
                     return player_count
-                else:
-                    print('Valor inválido. Debe ser un número entre 2 y 4.')
-            except ValueError:
-                print('Valor inválido. Debe ser un número entre 2 y 4.') 
+                print('Valor inválido. Debe ser un número entre 2 y 4.')    
+    def get_player_input(self):
+        try:
+            return int(input('Cantidad de jugadores: '))
+        except ValueError:
+            print('Valor inválido. Debe ser un número.')    
     def welcome_message(self):
         print('Bienvenido')    
     def display_player_count(self):
@@ -30,5 +29,3 @@ class ScrabbleGame:
 if __name__ == "__main__":
     scrabble_game = ScrabbleGame()
     scrabble_game.run()
-
-    
