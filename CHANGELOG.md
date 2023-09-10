@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.10] - 2023-09-10
+
+###  Added
+
+Now the "calculate_word_value" function is a method for the "Board" class and your tests are now in "test_board.py".
+ 
+Added to the 'models' file is a 'initial_tiles' function that populates the 'tiles' tile list with an initial set of letters according to the quantities specified in the 'initial_tiles' dictionary.
+
+
+### Modification
+
+Modified the 'Cell' class constructor to accept optional 'letter' and 'status' arguments, allowing 'Cell' instances to be created with specific letters and statuses.
+
+The 'BigTiles' class was modified by adding and correctly ordering all the letters and their values.
+
+
 ## [0.0.9] - 2023-09-9
 
 ###  Added
