@@ -1,7 +1,6 @@
 import unittest
 from game.board import Board
-from game.board import Tile
-
+from game.models import Tile
 
 class TestBoard(unittest.TestCase):
     def test_init(self):
