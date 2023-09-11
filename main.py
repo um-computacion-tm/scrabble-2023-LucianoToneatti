@@ -24,4 +24,3 @@ def main():
     game.validate_word"""
 if __name__ == "__main__":
     main()
-    
