@@ -20,7 +20,7 @@ class TestPlayer(unittest.TestCase):
         player.rack = [Tile('A', 1), Tile('B',3), Tile('C',2)]
         player.exchange_tiles(2,bag1)
         self.assertEqual(len(player.rack),3)
-        self.assertEqual(len(bag1.tiles),29)
+        self.assertEqual(len(bag1.tiles),100)
 
 if __name__ == '__main__':
     unittest.main()

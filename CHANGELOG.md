@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.11] - 2023-09-11
+
+###  Added
+
+Work on 'models' and 'test_models' file.
+Fixed a bug in the 'put' method that caused duplicate tokens to be added to the bag.
+Adjusted the expected value in the 'test_put' test to reflect the fix of the 'put' method.
+
+### Modification
+
+Rearrange the code in the '__init__' method of the 'BigTiles' class to avoid duplicate calls to 'random.shuffle'.
+
 ## [0.0.10] - 2023-09-10
 
 ###  Added
