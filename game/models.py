@@ -7,53 +7,57 @@ class Tile:
 class BagTiles:
     def __init__(self):
         self.tiles = [
-            Tile('A',1),
-            Tile('E',1),
-            Tile('I',1),
-            Tile('O',1),
-            Tile('U',1),
-            Tile('L',1),
-            Tile('N',1),
-            Tile('S',1),
-            Tile('T',1),
-            Tile('R',1),
-            Tile('D',2),
-            Tile('G',2),
-            Tile('B',3),
-            Tile('C',3),
-            Tile('M',3),
-            Tile('P',3),
-            Tile('F',4),
-            Tile('H',4),
-            Tile('V',4),
-            Tile('W',4),
-            Tile('Y',4),
-            Tile('K',5),
-            Tile('Q',5),
-            Tile('J',8),
-            Tile('X',8),
-            Tile('Ñ',8),
-            Tile('Z',10),
-            Tile('Com', 0),
+            Tile('A', 11),
+            Tile('B', 2),
+            Tile('C', 4),
+            Tile('D', 5),
+            Tile('E', 11),
+            Tile('F', 1),
+            Tile('G', 2),
+            Tile('H', 2),
+            Tile('I', 6),
+            Tile('J', 1),
+            Tile('L', 4),
+            Tile('M', 2),
+            Tile('N', 5),
+            Tile('Ñ', 1),
+            Tile('O', 9),
+            Tile('P', 2),
+            Tile('Q', 1),
+            Tile('R', 5),
+            Tile('S', 6),
+            Tile('T', 4),
+            Tile('U', 5),
+            Tile('V', 1),
+            Tile('X', 1),
+            Tile('Y', 1),
+            Tile('Z', 1),
+            Tile('?', 2)
         ]
+        
+        #Añadí las fichas de las letras restantes para llegar a 100
+        remaining_tiles = 100 - len(self.tiles)
+        for _ in range(remaining_tiles):
+            self.tiles.append(Tile('?',0))
         random.shuffle(self.tiles)
 
     def take(self, count):
         tiles = []
         for _ in range(count):
-            tiles.append(self.tiles.pop())
+            tiles = self.tiles.pop(0)
         return tiles
     def put(self, tiles):
         self.tiles.extend(tiles)
-
-  # def initial_tiles(self):
-   #     total = []
-     
-     #   bag = BagTiles()
-      #  initial_tiles = {'A':11,'E':11,'O':8,'I':5,'S':5,'N':4,'L':3,'R':4,'U':4,'T':3,'D':4,'G':1,'C':3,'B':1,'M':1,'P':1,'H':1,'?':1}
-      #  for letters, amount in initial_tiles.items():
-     #       for _ in range(amount):
-      #          for x in bag.tiles:
-         #           if x.letter == letters:
-               #         total.append(x)
-    
+        random.shuffle(self.tiles)
+        
+    def initial_tiles(self):
+        total = []
+        initial_tiles = {'A':11,'B':2,'C':4,'D':5,'E':11,'F':1,
+                         'G':2,'H':2,'I':6,'J':1,'L':4,'M':2,
+                         'N':5,'O':9,'P':2,'Q':1,'R':5,'S':6,
+                         'T':4,'U':5,'V':1,'X':1,'Y':1,'Z':1,'?':2}    
+        for letter, amount in initial_tiles.items():
+            matching_tiles = [tile for tile in self.tiles if tile.letter == letter]
+            available_count = min(len(matching_tiles), amount)
+            total.extend(matching_tiles[:available_count])    
+        self.tiles.extend(total)
