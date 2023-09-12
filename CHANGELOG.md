@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.12] - 2023-09-12
+
+###  Added
+
+Work on 'main' and 'test_main' file.
+The is_valid_player_count function has been replaced by the valid_player_count method to check the validity of the number of players. Logic and error handling were simplified.
+Changed the entry prompt message from "Number of players:" to "Number of participants is:".
+Removed unnecessary while True loop in get_player_count.
+These changes improve the clarity and structure of the code compared to the previous version.
+
 ## [0.0.11] - 2023-09-11
 
 ###  Added
