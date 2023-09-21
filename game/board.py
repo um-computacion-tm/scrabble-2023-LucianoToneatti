@@ -32,3 +32,19 @@ class Board:
         total_value *= word_multiplier
 
         return total_value
+    def validate_word_inside_board(self,word, location, orientation):
+        col = location[0]
+        row = location[1]
+        word_length = len(word)
+        if orientation == "H":
+            return col + word_length <= 15
+        elif orientation == "V":
+            return row + word_length <= 15
+    
+    def is_empty(self):
+        if self.grid[7][7].letter is None:
+            return True
+        else:
+            return False
+    def validate_word_place_board(self):
+        pass
