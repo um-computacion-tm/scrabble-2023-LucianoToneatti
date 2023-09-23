@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.14] - 2023-09-22
+
+###  Added
+In the "Board" file
+I implemented a new method called 'validate_word_place_board' in the 'Board' class. The idea behind this method is to check if it is possible to place a tile on the board. Additionally, new tests for this method will be added in the future.
+
+###Change
+
+Fixing bugs and problems.
+I was fighting with the code and its test of several files to increase coverage.
+
 ## [0.0.13] - 2023-09-20
 
 ###  Added
@@ -15,6 +26,7 @@ Create a new method for the "Board" class called "is_empty", what it does is see
 I also created this method "validate_word_inside_board" which helps determine if a word fits properly inside the board without going out of bounds based on its location and orientation.
 
 ### Change
+
 I changed the board tests because their level of complexity was very high and difficult to understand.
 
 ## [0.0.12] - 2023-09-12

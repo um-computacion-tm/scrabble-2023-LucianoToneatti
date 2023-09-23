@@ -2,20 +2,15 @@ from game.cell import Cell
 
 class Board:
     def __init__(self):
-        self.grid = [
-            [Cell(1, '') for _ in range(15)]
-            for _ in range(15)
-        ]
-
+        self.grid = [[Cell(1, '') for _ in range(15)]for _ in range(15)]
+        
     def is_active_and_letter_multiplier(self,cell):
         return cell.status == 'active' and cell.multiplier_type == 'letter'
-    
     def is_active_and_word_multiplier(self,cell):
         return cell.status == 'active' and cell.multiplier_type == 'word'
     
     def is_desactive_or_none_multiplier(self,cell):
         return cell.status == 'desactive' or cell.multiplier_type == ''
-    
     def calculate_word_value(self,word):
         total_value = 0
         word_multiplier = 1
@@ -44,7 +39,7 @@ class Board:
             return True
         else:
             return False
-        
+
     def validate_word_place_board(self, word, location, orientation):
         column = location[0]
         row = location[1]
