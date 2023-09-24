@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.15] - 2023-09-24
+
+###  Added
+
+Finish the "validate_word_place_board" method.
+Create new methods for the class "Board", "word_in_the_center", "validate_word_horizontal" and "validate_word_vertical".
+"word_in_the_center" will check if the player's word will be in the center.
+"validate_word_horizontal" will check if the player's word will use the other player's tile horizontally.
+"validate_word_vertical" will check if the player's word will use the other player's word vertically.
+
 ## [0.0.14] - 2023-09-22
 
 ###  Added
