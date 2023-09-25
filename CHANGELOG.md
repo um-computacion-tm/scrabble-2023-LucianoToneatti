@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.16] - 2023-09-25
+
+###  Added
+
+In the 'Board' class, I added several new methods: "word_in_the_center_horizontal," "word_in_the_center_vertical," "compare_tiles_and_letters," and "check_right_letters," each with its own tests. 
+These are used for refactoring purposes and will be used for other things in the near future. 
+
+###Change
+
+Additionally, I reduced the complexity of some methods and eliminated duplications.
+
 ## [0.0.15] - 2023-09-24
 
 ###  Added

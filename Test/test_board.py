@@ -139,7 +139,7 @@ class TestBoard(unittest.TestCase):
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
-    def test_validate_word_horizontal_found_letter(self):    ### ESTE TEST NO ES SEGURO POR COMPLETO ###
+    def test_validate_word_horizontal_found_letter(self):    ### ESTE TEST NO ES SEGURO POR COMPLETO, PERO FUNCIONA XD ###
         board = Board()
         word = "Facultad"
         location = (7, 4)
@@ -147,6 +147,71 @@ class TestBoard(unittest.TestCase):
         board.grid[7][4].add_letter(Tile('F', 1))  
         word_is_valid = board.validate_word_horizontal(word, location, orientation)
         self.assertEqual(word_is_valid, False)
+
+    def test_place_word_no_empthy_2_coincidence_horizontal_fine(self):
+        board = Board()
+        board.grid[7][7].add_letter(Tile('C',1))
+        board.grid[8][7].add_letter(Tile('A',1))
+        board.grid[9][7].add_letter(Tile('S',1))
+        board.grid[10][7].add_letter(Tile('A',1))
+        board.grid[7][8].add_letter(Tile('A',1))
+        board.grid[8][8].add_letter(Tile('L',1))
+        board.grid[9][8].add_letter(Tile('A',1))
+        word = "Foca"
+        location = (7,5)
+        orientation = "H"
+
+        word_is_valid = board.validate_word_place_board(word, location, orientation)
+        assert word_is_valid == True
+
+    def test_place_word_no_empthy_2_coincidence_horizontal_wrong(self):
+        board = Board()
+        board.grid[7][7].add_letter(Tile('C',1))
+        board.grid[8][7].add_letter(Tile('A',1))
+        board.grid[9][7].add_letter(Tile('S',1))
+        board.grid[10][7].add_letter(Tile('A',1))
+        board.grid[7][8].add_letter(Tile('M',1))
+        board.grid[8][8].add_letter(Tile('A',1))
+        board.grid[9][8].add_letter(Tile('L',1))
+        word = "Foca"
+        location = (7,5)
+        orientation = "H"
+
+        word_is_valid = board.validate_word_place_board(word, location, orientation)
+        assert word_is_valid == False
+
+    def test_place_word_no_empthy_2_coincidence_vertical_fine(self):
+        board = Board()
+        board.grid[7][7].add_letter(Tile('C',1))
+        board.grid[7][8].add_letter(Tile('A',1))
+        board.grid[7][9].add_letter(Tile('S',1))
+        board.grid[7][10].add_letter(Tile('A',1))
+        board.grid[8][6].add_letter(Tile('A',1))
+        board.grid[8][7].add_letter(Tile('L',1))
+        board.grid[8][8].add_letter(Tile('A',1))
+        word = "Foca"
+        location = (5,7)
+        orientation = "V"
+
+        word_is_valid = board.validate_word_place_board(word, location, orientation)
+        assert word_is_valid == False
+
+    def test_place_word_no_empthy_2_coincidence_vertical_wrong(self):
+        board = Board()
+        board.grid[7][7].add_letter(Tile('C',1))
+        board.grid[7][8].add_letter(Tile('A',1))
+        board.grid[7][9].add_letter(Tile('S',1))
+        board.grid[7][10].add_letter(Tile('A',1))
+        board.grid[8][7].add_letter(Tile('M',1))
+        board.grid[8][8].add_letter(Tile('A',1))
+        board.grid[8][9].add_letter(Tile('L',1))
+        word = "Foca"
+        location = (5,7)
+        orientation = "V"
+
+        word_is_valid = board.validate_word_place_board(word, location, orientation)
+        assert word_is_valid == False
+
 
 class TestCalculateWordValue(unittest.TestCase):
     def test_simple(self):
