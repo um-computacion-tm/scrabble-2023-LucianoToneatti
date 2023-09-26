@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.16] - 2023-09-25
+## [0.1.7] - 2023-09-26
+
+###  Added
+
+Add a new method in the "Board" class called "check_contions" and it is used to resolve errors in the duplication of some code.
+
+### Change
+
+Edit the "word_in_the_center" method.
+I eliminated a couple of methods because more than helping, they got in the way and caused problems.
+Fix code duplication issues, one in the "validate_word_horizontal" and "validate_word_vertical" method and the other in "word_in_the_center".
+
+## [0.1.6] - 2023-09-25
 
 ###  Added
 
@@ -18,7 +30,7 @@ These are used for refactoring purposes and will be used for other things in the
 
 Additionally, I reduced the complexity of some methods and eliminated duplications.
 
-## [0.0.15] - 2023-09-24
+## [0.1.5] - 2023-09-24
 
 ###  Added
 
@@ -28,10 +40,10 @@ Create new methods for the class "Board", "word_in_the_center", "validate_word_h
 "validate_word_horizontal" will check if the player's word will use the other player's tile horizontally.
 "validate_word_vertical" will check if the player's word will use the other player's word vertically.
 
-## [0.0.14] - 2023-09-22
+## [0.1.4] - 2023-09-22
 
 ###  Added
-In the "Board" file
+In the "Board" file.
 I implemented a new method called 'validate_word_place_board' in the 'Board' class. The idea behind this method is to check if it is possible to place a tile on the board. Additionally, new tests for this method will be added in the future.
 
 ###Change
@@ -39,18 +51,18 @@ I implemented a new method called 'validate_word_place_board' in the 'Board' cla
 Fixing bugs and problems.
 I was fighting with the code and its test of several files to increase coverage.
 
-## [0.0.13] - 2023-09-20
+## [0.1.3] - 2023-09-20
 
 ###  Added
 
-Create a new method for the "Board" class called "is_empty", what it does is see if the board is empty
+Create a new method for the "Board" class called "is_empty", what it does is see if the board is empty.
 I also created this method "validate_word_inside_board" which helps determine if a word fits properly inside the board without going out of bounds based on its location and orientation.
 
 ### Change
 
 I changed the board tests because their level of complexity was very high and difficult to understand.
 
-## [0.0.12] - 2023-09-12
+## [0.1.2] - 2023-09-12
 
 ###  Added
 
@@ -60,7 +72,7 @@ Changed the entry prompt message from "Number of players:" to "Number of partici
 Removed unnecessary while True loop in get_player_count.
 These changes improve the clarity and structure of the code compared to the previous version.
 
-## [0.0.11] - 2023-09-11
+## [0.1.1] - 2023-09-11
 
 ###  Added
 
@@ -72,7 +84,7 @@ Adjusted the expected value in the 'test_put' test to reflect the fix of the 'pu
 
 Rearrange the code in the '__init__' method of the 'BigTiles' class to avoid duplicate calls to 'random.shuffle'.
 
-## [0.0.10] - 2023-09-10
+## [0.1.0] - 2023-09-10
 
 ###  Added
 
