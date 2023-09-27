@@ -1,9 +1,27 @@
 import unittest
 from game.dictionary import Dictionary
-from game.board import Board
-
 
 class TestDictionary(unittest.TestCase):
-    def test_dictionary_true(self):
+    def test_dictionary_accents(self):
+        dic = Dictionary()
+        word = "Diversión"
+        self.assertEqual(dic.accents(word), "Diversion")
+    def test_simple_verify(self):
+        dic = Dictionary()
+        word = "Banana"
+        self.assertEqual(dic.verify_word(word), True)
+    def test_verify_false_word(self):
+        dic = Dictionary()
+        word = "Kadabra"
+        self.assertEqual(dic.verify_word(word), False)
+    def test_verify_word_with_accents(self):
+        dic = Dictionary()
+        word = "Diversión"
+        self.assertEqual(dic.verify_word(word), True)
+    def test_verify_word_with_dieresis(self):
+        dic = Dictionary()
+        word = "Pingüino"
+        self.assertEqual(dic.verify_word(word), True)
 
-        dictionary = Dictionary()
+if __name__ == '__main__':
+    unittest.main()
