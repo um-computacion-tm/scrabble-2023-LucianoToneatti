@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.9] - 2023-10-02
+
+###  Added
+
+Added a new method for the "Board" class called "put_multipliers".
+And also the board itself with its cell multipliers in their corresponding places.
 
 ## [0.1.8] - 2023-09-27
 

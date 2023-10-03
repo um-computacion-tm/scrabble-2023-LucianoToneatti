@@ -2,8 +2,35 @@ from game.cell import Cell
 
 class Board:
     def __init__(self):
-        self.grid = [[Cell(1, '') for _ in range(15)]for _ in range(15)]
-        
+         board_multipliers = [
+            ["3W", None, None, "2L", None, None, None, "3W", None, None, None, "2L", None, None, "3W"],
+            [None, "2W", None, None, None, "3L", None, None, None, "3L", None, None, None, "2W", None],  
+            [None, None, "2W", None, None, None, "2L", None, "2L", None, None, None, "2W", None, None], 
+            ["2L", None, None, "2W", None, None, None, "2L", None, None, None, "2W", None, None, "2L"],  
+            [None, None, None, None, "2W", None, None, None, None, None, "2W", None, None, None, None],  
+            [None, "3L", None, None, None, "3L", None, None, None, "3L", None, None, None, "3L", None],  
+            [None, None, "2L", None, None, None, "2L", None, "2L", None, None, None, "2L", None, None],  
+            ["3W", None, None, "2L", None, None, None, "2W", None, None, None, "2L", None, None, "3W"],  
+            [None, None, "2L", None, None, None, "2L", None, "2L", None, None, None, "2L", None, None],  
+            [None, "3L", None, None, None, "3L", None, None, None, "3L", None, None, None, "3L", None],  
+            [None, None, None, None, "2W", None, None, None, None, None, "2W", None, None, None, None],  
+            ["2L", None, None, "2W", None, None, None, "2L", None, None, None, "2W", None, None, "2L"],  
+            [None, None, "2W", None, None, None, "2L", None, "2L", None, None, None, "2W", None, None],  
+            [None, "2W", None, None, None, "3L", None, None, None, "3L", None, None, None, "2W", None],  
+            ["3W", None, None, "2L", None, None, None, "3W", None, None, None, "2L", None, None, "3W"] 
+        ]
+         self.grid = [[self.put_multipliers(multiplier) for multiplier in row] for row in board_multipliers ]
+
+    def put_multipliers(self, multiplier):
+        if multiplier is None:
+            return Cell()
+        multiplier_type = multiplier[-1]
+        multiplier_value = int(multiplier[0])
+        if multiplier_type == "W":
+            return Cell(multiplier=multiplier_value, multiplier_type="word")
+        elif multiplier_type == "L":
+            return Cell(multiplier=multiplier_value, multiplier_type="letter")
+
     def is_active_and_letter_multiplier(self,cell):
         return cell.status == 'active' and cell.multiplier_type == 'letter'
     def is_active_and_word_multiplier(self,cell):
