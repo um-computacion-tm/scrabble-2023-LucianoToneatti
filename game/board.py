@@ -94,17 +94,7 @@ class Board:
 
     def check_conditions(self, list, word, location, orientation):
         return list[0] > 0 and self.validate_word_inside_board(word, location, orientation) is True
-    """def validate_word_horizontal(self, word, location, orientation):
-        column = location[0]
-        row = location[1]
-        word_lenght = len(word)
-        found_letter = False
-        for i in range(word_lenght):
-                    actual_tile = self.grid[column][row + i].letter
-                    if actual_tile is not None:
-                        if actual_tile.letter.lower() == word[i]:
-                            found_letter = True
-                    return found_letter and self.validate_word_inside_board(word, location, orientation) is True"""
+
     def validate_word_horizontal(self, word, location, orientation):
         column = location[0]
         row = location[1]

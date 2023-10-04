@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2023-10-03
+
+### Added
+
+Added a method named "contains" to the "Player" class to check if a player has the necessary tiles to form a set of tiles.
+It also verifies whether the player has access to the tile bag and whether the tiles are available.
+This version provides a crucial functionality for verifying tile availability and is essential for the game.
+
+###Change
+
+When adding this new method, I decided to comment out these "get_tiles" and "exchange_tiles" methods for the time being.
+
 ## [0.1.9] - 2023-10-02
 
 ###  Added
