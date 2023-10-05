@@ -1,7 +1,6 @@
 import unittest
 from game.scrabble import Scrabble
-from game.player import Player
-from game.board import Board
+from game.models import Tile
 
 class TestScrabble(unittest.TestCase):
     def test_scrabble(self):
@@ -18,10 +17,10 @@ class TestScrabble(unittest.TestCase):
         game.next_turn()
         self.assertEqual(game.current_player,game.players[0])
     def test_next_turn_when_game_is_not_the_first_and_is_last(self):
-        game = Scrabble(2)    # Test when game is not the first
+        game = Scrabble(2)    
         game.current_player = game.players[0]
         game.next_turn()
-        self.assertEqual(game.current_player, game.players[1])    # Test when game is last
+        self.assertEqual(game.current_player, game.players[1])   
         game.current_player = game.players[1]
         game.next_turn()
         self.assertEqual(game.current_player, game.players[0])
@@ -33,6 +32,32 @@ class TestScrabble(unittest.TestCase):
     def test_playing(self):
         game = Scrabble(1)
         self.assertEqual(game.playing(), True)
+    def test_validate_word(self):
+        game = Scrabble(2)
+        word = "Facultad"
+        location = (5, 4)
+        orientation = "H"
+        self.assertEqual(game.scrabble_validate_word(word,location,orientation), True)
+
+    def test_scrabble_validate_word(self):
+        game = Scrabble(2)
+        result = game.scrabble_validate_word("PYTHON", (0, 0), "H")
+        self.assertEqual(result, True)  
+
+    def test_scrabble_string_to_tiles(self):
+        expected_tiles_data = [
+            ('P', 2),
+            ('Y', 4),
+            ('T', 1),
+            ('H', 4),
+            ('O', 1),
+            ('N', 1)
+        ]
+        expected_tiles = [Tile(letter=letter, value=value) for letter, value in expected_tiles_data]
+        game = Scrabble(2)  
+        result = game.scrabble_string_to_tiles("PYTHON")
+        self.assertEqual([tile.letter for tile in result], [tile.letter for tile in expected_tiles])
+        self.assertEqual([tile.value for tile in result], [tile.value for tile in expected_tiles])
 
 if __name__ == '__main__':
     unittest.main()

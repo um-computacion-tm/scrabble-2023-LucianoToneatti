@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2023-10-04
+
+### Added
+
+Added two methods to the Scrabble class:
+Scrabble_validate_word – This method validates whether a word can be placed on the board in a specific location and orientation.
+Scrabble_string_to_tiles - This method takes an input string and converts it to a list of Scrabble tiles, using a set of tiles available in the game's tile pool.
+
+And create the tests for both methods.
+
 ## [0.2.0] - 2023-10-03
 
 ### Added
