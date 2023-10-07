@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2023-10-07
+
+### Added
+
+In this commit, a new method has been added to convert a text string into a Scrabble tile list. This method has the ability to handle special letters such as 'CH,' 'LL,' and 'Ñ,' assigning them their corresponding values according to the game rules.This simplifies the conversion of words containing these special letters into playable Scrabble tiles.
+
 ## [0.2.1] - 2023-10-04
 
 ### Added
