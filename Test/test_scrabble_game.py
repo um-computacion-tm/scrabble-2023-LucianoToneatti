@@ -1,5 +1,6 @@
 import unittest
 from game.scrabble import Scrabble
+from game.cell import Cell
 from game.models import Tile
 
 class TestScrabble(unittest.TestCase):
@@ -93,19 +94,63 @@ class TestScrabble(unittest.TestCase):
         self.assertEqual(list_tiles[4].letter, "O")
         self.assertEqual(list_tiles[4].value, 1)
         
-    def test_converter_word_special_ÑANDU(self):
+    def test_converter_word_special_TARRO(self):
         game = Scrabble(2)
-        list_tiles = game.scrabble_string_to_tiles("ÑANDU")
-        self.assertEqual(list_tiles[0].letter, "Ñ")
-        self.assertEqual(list_tiles[0].value, 8)  
+        list_tiles = game.scrabble_string_to_tiles("TARRO")
+        self.assertEqual(list_tiles[0].letter, "T")
+        self.assertEqual(list_tiles[0].value, 1)  
         self.assertEqual(list_tiles[1].letter, "A")
         self.assertEqual(list_tiles[1].value, 1)
-        self.assertEqual(list_tiles[2].letter, "N")
-        self.assertEqual(list_tiles[2].value, 1)
-        self.assertEqual(list_tiles[3].letter, "D")
-        self.assertEqual(list_tiles[3].value, 2)  
-        self.assertEqual(list_tiles[4].letter, "U")
-        self.assertEqual(list_tiles[4].value, 1)
+        self.assertEqual(list_tiles[2].letter, "RR")
+        self.assertEqual(list_tiles[2].value, 8)
+        self.assertEqual(list_tiles[3].letter, "O")
+        self.assertEqual(list_tiles[3].value, 1)  
+
+    def test_calculate_score_word_with_single_letter(self):
+        game = Scrabble(2)
+        # Define una palabra que contiene una única letra 'A' en una casilla con multiplicador de palabra 1 y valor de letra 1.
+        word = [Cell(multiplier=1, letter=Tile("A", 1))]
+        game.next_turn()
+        # Verifica que la puntuación del jugador actual sea 0 al inicio.
+        self.assertEqual(game.current_player.score, 0)
+        game.scrabble_word_calculate_score(word)
+        self.assertEqual(game.current_player.score, 1)
+
+    def test_calculate_score_word_with_existing_score(self):
+        game = Scrabble(2)
+        # Define una palabra que contiene una única letra 'Z' en una casilla con multiplicador de palabra 2 y valor de letra 10.
+        word = [Cell(multiplier=2, letter=Tile("Z", 10))]
+        game.next_turn()
+        # Establece manualmente la puntuación del jugador actual en 5.
+        game.current_player.score = 5
+        game.scrabble_word_calculate_score(word)
+        self.assertEqual(game.current_player.score, 25)
+
+    #ESTOS TEST SON PARA CUBRIR AL def scrabble_string_to_tiles
+
+    def test_single_letter_conversion_agua(self):
+        game = Scrabble(2)
+        input_string = "agua"
+        expected_tiles = [
+            Tile('A', 1),
+            Tile('G', 2),
+            Tile('U', 1),
+            Tile('A', 1)
+        ]
+        tiles = game.scrabble_string_to_tiles(input_string)
+        self.assertEqual([tile.letter for tile in tiles], [tile.letter for tile in expected_tiles])
+
+    def test_single_letter_conversion_moco(self):
+        game = Scrabble(2)
+        input_string = "moco"
+        expected_tiles = [
+            Tile('M', 3),
+            Tile('O', 1),
+            Tile('C', 2),
+            Tile('O', 1)
+        ]
+        tiles = game.scrabble_string_to_tiles(input_string)
+        self.assertEqual([tile.letter for tile in tiles], [tile.letter for tile in expected_tiles])
 
 if __name__ == '__main__':
     unittest.main()

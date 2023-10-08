@@ -14,8 +14,10 @@ class Scrabble:
             self.players.append(Player())
         self.current_player = None
         self.turn = 1
+
     def playing(self):
         return True
+    
     def next_turn(self):
         if self.current_player is None:
             self.current_player = self.players[0]
@@ -25,16 +27,18 @@ class Scrabble:
             player_turn = self.players.index(self.current_player) + 1
             self.current_player = self.players[player_turn]
         self.turn += 1
+
     def scrabble_validate_word(self, word, location, orientation):
         return self.board.validate_word_inside_board(word, location, orientation)
+   
     def scrabble_string_to_tiles(self, input_string):
         bag = BagTiles()
         return [tile for letter in input_string.upper() for tile in bag.tiles if tile.letter == letter]
-
+   
     def scrabble_string_to_tiles(self, input_string):
         bag = BagTiles()
         tiles_list = []
-        special_letters = {"CH": 5, "LL": 8, "Ñ": 8}
+        special_letters = {"RR": 8, "LL": 8, "CH": 5}
         i = 0
         while i < len(input_string):
             letter = input_string[i]
@@ -46,3 +50,12 @@ class Scrabble:
                 tiles_list.append(next(tile for tile in bag.tiles if tile.letter == letter.upper()))
                 i += 1
         return tiles_list
+
+    def scrabble_word_calculate_score(self, word):
+        total_score = 0
+        for cell in word:
+            tile = cell.letter
+            tile_value = tile.value
+            cell_multiplier = cell.multiplier
+            total_score += tile_value * cell_multiplier
+        self.current_player.score += total_score

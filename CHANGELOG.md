@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2023-10-08
+
+### Added
+
+In this commit, a new method called scrabble_word_calculate_score has been added to the Scrabble class. This method allows you to calculate the score of a word in the Scrabble game, considering the values ​​of the letters and the multipliers of the squares on the board. (X3 multipliers do not work yet).
+
+I'm trying to create a test to cover "def scrabble string_to_table" but I still can't get it to cover it correctly.
+
 ## [0.2.2] - 2023-10-07
 
 ### Added
