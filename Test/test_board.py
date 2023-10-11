@@ -19,7 +19,6 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.grid[14][0].multiplier, 3)
         self.assertEqual(board.grid[14][7].multiplier, 3)
         self.assertEqual(board.grid[14][14].multiplier, 3)
-        #
         self.assertEqual(board.grid[1][1].multiplier, 2)
         self.assertEqual(board.grid[2][2].multiplier, 2)
         self.assertEqual(board.grid[3][3].multiplier, 2)
@@ -51,7 +50,6 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.grid[9][13].multiplier, 3)
         self.assertEqual(board.grid[13][5].multiplier, 3)
         self.assertEqual(board.grid[13][9].multiplier, 3)
-        #
         self.assertEqual(board.grid[0][3].multiplier, 2)
         self.assertEqual(board.grid[0][11].multiplier, 2)
         self.assertEqual(board.grid[2][6].multiplier, 2)
@@ -165,7 +163,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (8, 4)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == True
 
@@ -178,7 +175,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (8, 3)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -191,7 +187,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (4, 8)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == True
 
@@ -204,7 +199,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (3, 8)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -229,7 +223,6 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (7,5)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == True
 
@@ -245,7 +238,6 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (7,5)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -261,7 +253,6 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (5,7)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -277,11 +268,10 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (5,7)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
     #TEST DE PALABRAS EN V Y EN H
-    def test_insert_horizontal(self):
+    """def test_insert_horizontal(self):
         board = Board()
         word = "VENENO"
         location = (8, 8)
@@ -308,6 +298,31 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.grid[11][8].letter.letter, "E")
         self.assertEqual(board.grid[12][8].letter.letter, "N")
         self.assertEqual(board.grid[13][8].letter.letter, "O")
+        """
+    def check_word_insertion(self, board, word, location, orientation):
+        board.insert(word, location, orientation)
+        self.assertEqual(board.grid[location[0]][location[1]].letter.letter, word[0])
+        for i in range(1, len(word)):
+            if orientation == "H":
+                self.assertEqual(board.grid[location[0]][location[1] + i].letter.letter, word[i])
+            else:
+                self.assertEqual(board.grid[location[0] + i][location[1]].letter.letter, word[i])
+
+    def test_insert_horizontal(self):
+        board = Board()
+        word = "VENENO"
+        location = (8, 8)
+        orientation = "H"
+        self.check_word_insertion(board, word, location, orientation)
+
+    def test_insert_vertical(self):
+        board = Board()
+        word = "VENENO"
+        location = (8, 8)
+        orientation = "V"
+        self.check_word_insertion(board, word, location, orientation)
+
+
 
     def test_converter_word_special_CHOCOLATE(self):
         board = Board()

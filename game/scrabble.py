@@ -1,7 +1,6 @@
 from game.board import Board
 from game.player import Player
 from game.models import BagTiles
-from game.models import Tile
 import uuid
 
 class Scrabble:

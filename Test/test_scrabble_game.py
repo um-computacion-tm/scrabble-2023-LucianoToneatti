@@ -80,35 +80,5 @@ class TestScrabble(unittest.TestCase):
         game.scrabble_word_calculate_score(word)
         self.assertEqual(game.current_player.score, 25)
 
-    #ESTOS TEST SON PARA CUBRIR AL def scrabble_string_to_tiles pero todavia no logro que lo cubran correctamente
-
-    """def test_single_letter_conversion_agua(self):
-        game = Scrabble(2)
-        input_string = "agua"
-        expected_tiles = [
-            Tile('A', 1),
-            Tile('G', 2),
-            Tile('U', 1),
-            Tile('A', 1)
-        ]
-        tiles = game.scrabble_string_to_tiles(input_string)
-        self.assertEqual([tile.letter for tile in tiles], [tile.letter for tile in expected_tiles])
-
-    def test_single_letter_conversion_moco(self):
-        game = Scrabble(2)
-        input_string = "moco"
-        expected_tiles = [
-            Tile('M', 3),
-            Tile('O', 1),
-            Tile('C', 2),
-            Tile('O', 1)
-        ]
-        tiles = game.scrabble_string_to_tiles(input_string)
-        self.assertEqual([tile.letter for tile in tiles], [tile.letter for tile in expected_tiles])
-    """
-
-    
-
-
 if __name__ == '__main__':
     unittest.main()
