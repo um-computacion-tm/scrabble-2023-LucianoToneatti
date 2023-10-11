@@ -1,9 +1,38 @@
 from game.cell import Cell
+from game.models import BagTiles
+from game.models import Tile
 
 class Board:
     def __init__(self):
-        self.grid = [[Cell(1, '') for _ in range(15)]for _ in range(15)]
-        
+         board_multipliers = [
+            ["3W", None, None, "2L", None, None, None, "3W", None, None, None, "2L", None, None, "3W"],
+            [None, "2W", None, None, None, "3L", None, None, None, "3L", None, None, None, "2W", None],  
+            [None, None, "2W", None, None, None, "2L", None, "2L", None, None, None, "2W", None, None], 
+            ["2L", None, None, "2W", None, None, None, "2L", None, None, None, "2W", None, None, "2L"],  
+            [None, None, None, None, "2W", None, None, None, None, None, "2W", None, None, None, None],  
+            [None, "3L", None, None, None, "3L", None, None, None, "3L", None, None, None, "3L", None],  
+            [None, None, "2L", None, None, None, "2L", None, "2L", None, None, None, "2L", None, None],  
+            ["3W", None, None, "2L", None, None, None, "2W", None, None, None, "2L", None, None, "3W"],  
+            [None, None, "2L", None, None, None, "2L", None, "2L", None, None, None, "2L", None, None],  
+            [None, "3L", None, None, None, "3L", None, None, None, "3L", None, None, None, "3L", None],  
+            [None, None, None, None, "2W", None, None, None, None, None, "2W", None, None, None, None],  
+            ["2L", None, None, "2W", None, None, None, "2L", None, None, None, "2W", None, None, "2L"],  
+            [None, None, "2W", None, None, None, "2L", None, "2L", None, None, None, "2W", None, None],  
+            [None, "2W", None, None, None, "3L", None, None, None, "3L", None, None, None, "2W", None],  
+            ["3W", None, None, "2L", None, None, None, "3W", None, None, None, "2L", None, None, "3W"] 
+        ]
+         self.grid = [[self.put_multipliers(multiplier) for multiplier in row] for row in board_multipliers ]
+
+    def put_multipliers(self, multiplier):
+        if multiplier is None:
+            return Cell()
+        multiplier_type = multiplier[-1]
+        multiplier_value = int(multiplier[0])
+        if multiplier_type == "W":
+            return Cell(multiplier=multiplier_value, multiplier_type="word")
+        elif multiplier_type == "L":
+            return Cell(multiplier=multiplier_value, multiplier_type="letter")
+
     def is_active_and_letter_multiplier(self,cell):
         return cell.status == 'active' and cell.multiplier_type == 'letter'
     def is_active_and_word_multiplier(self,cell):
@@ -67,17 +96,7 @@ class Board:
 
     def check_conditions(self, list, word, location, orientation):
         return list[0] > 0 and self.validate_word_inside_board(word, location, orientation) is True
-    """def validate_word_horizontal(self, word, location, orientation):
-        column = location[0]
-        row = location[1]
-        word_lenght = len(word)
-        found_letter = False
-        for i in range(word_lenght):
-                    actual_tile = self.grid[column][row + i].letter
-                    if actual_tile is not None:
-                        if actual_tile.letter.lower() == word[i]:
-                            found_letter = True
-                    return found_letter and self.validate_word_inside_board(word, location, orientation) is True"""
+
     def validate_word_horizontal(self, word, location, orientation):
         column = location[0]
         row = location[1]
@@ -105,3 +124,33 @@ class Board:
                 return self.validate_word_horizontal(word, location, orientation)
              else:
                 return self.validate_word_vertical(word, location, orientation)
+             
+    def insert(self, word, location, orientation):
+        list_word = self.board_string_to_tiles(word)
+        column = location[0]
+        row = location[1]
+        i = 0
+        for _ in list_word:
+            self.grid[column][row].letter = list_word[i]
+            if orientation == "H":
+                row += 1
+                i += 1
+            elif orientation == "V":
+                column += 1
+                i += 1
+    
+    def board_string_to_tiles(self, input_string):
+        bag = BagTiles()
+        tiles_list = []
+        special_letters = {"RR": 8, "LL": 8, "CH": 5}
+        i = 0
+        while i < len(input_string):
+            letter = input_string[i]
+            if i < len(input_string) - 1 and input_string[i:i+2] in special_letters:
+                special_letter = input_string[i:i+2]
+                tiles_list.append(Tile(letter=special_letter, value=special_letters[special_letter]))
+                i += 2
+            else:
+                tiles_list.append(next(tile for tile in bag.tiles if tile.letter == letter.upper()))
+                i += 1
+        return tiles_list

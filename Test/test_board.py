@@ -8,6 +8,75 @@ class TestBoard(unittest.TestCase):
         board = Board()
         self.assertEqual(len(board.grid),15)
         self.assertEqual(len(board.grid[0]),15)
+
+    def test_board_multiplier_word_in_board(self):
+        board = Board()
+        self.assertEqual(board.grid[0][0].multiplier, 3)
+        self.assertEqual(board.grid[7][0].multiplier, 3)
+        self.assertEqual(board.grid[14][0].multiplier, 3)
+        self.assertEqual(board.grid[0][7].multiplier, 3)
+        self.assertEqual(board.grid[0][14].multiplier, 3)
+        self.assertEqual(board.grid[14][0].multiplier, 3)
+        self.assertEqual(board.grid[14][7].multiplier, 3)
+        self.assertEqual(board.grid[14][14].multiplier, 3)
+        #
+        self.assertEqual(board.grid[1][1].multiplier, 2)
+        self.assertEqual(board.grid[2][2].multiplier, 2)
+        self.assertEqual(board.grid[3][3].multiplier, 2)
+        self.assertEqual(board.grid[4][4].multiplier, 2)
+        self.assertEqual(board.grid[13][1].multiplier, 2)
+        self.assertEqual(board.grid[12][2].multiplier, 2)
+        self.assertEqual(board.grid[11][3].multiplier, 2)
+        self.assertEqual(board.grid[10][4].multiplier, 2)
+        self.assertEqual(board.grid[1][13].multiplier, 2)
+        self.assertEqual(board.grid[2][12].multiplier, 2)
+        self.assertEqual(board.grid[3][11].multiplier, 2)
+        self.assertEqual(board.grid[4][10].multiplier, 2)
+        self.assertEqual(board.grid[13][13].multiplier, 2)
+        self.assertEqual(board.grid[12][12].multiplier, 2)
+        self.assertEqual(board.grid[11][11].multiplier, 2)
+        self.assertEqual(board.grid[10][10].multiplier, 2)
+        self.assertEqual(board.grid[7][7].multiplier, 2)
+
+    def test_board_multiplier_letter_in_board(self):
+        board = Board()
+        self.assertEqual(board.grid[1][5].multiplier, 3)
+        self.assertEqual(board.grid[1][9].multiplier, 3)
+        self.assertEqual(board.grid[5][1].multiplier, 3)
+        self.assertEqual(board.grid[5][5].multiplier, 3)
+        self.assertEqual(board.grid[5][13].multiplier, 3)
+        self.assertEqual(board.grid[9][1].multiplier, 3)
+        self.assertEqual(board.grid[9][5].multiplier, 3)
+        self.assertEqual(board.grid[9][9].multiplier, 3)
+        self.assertEqual(board.grid[9][13].multiplier, 3)
+        self.assertEqual(board.grid[13][5].multiplier, 3)
+        self.assertEqual(board.grid[13][9].multiplier, 3)
+        #
+        self.assertEqual(board.grid[0][3].multiplier, 2)
+        self.assertEqual(board.grid[0][11].multiplier, 2)
+        self.assertEqual(board.grid[2][6].multiplier, 2)
+        self.assertEqual(board.grid[2][8].multiplier, 2)
+        self.assertEqual(board.grid[3][0].multiplier, 2)
+        self.assertEqual(board.grid[3][7].multiplier, 2)
+        self.assertEqual(board.grid[3][14].multiplier, 2)
+        self.assertEqual(board.grid[6][2].multiplier, 2)
+        self.assertEqual(board.grid[6][6].multiplier, 2)
+        self.assertEqual(board.grid[6][8].multiplier, 2)
+        self.assertEqual(board.grid[6][12].multiplier, 2)
+        self.assertEqual(board.grid[7][3].multiplier, 2)
+        self.assertEqual(board.grid[7][11].multiplier, 2)
+        self.assertEqual(board.grid[8][2].multiplier, 2)
+        self.assertEqual(board.grid[8][6].multiplier, 2)
+        self.assertEqual(board.grid[8][8].multiplier, 2)
+        self.assertEqual(board.grid[8][12].multiplier, 2)
+        self.assertEqual(board.grid[11][0].multiplier, 2)
+        self.assertEqual(board.grid[11][7].multiplier, 2)
+        self.assertEqual(board.grid[11][14].multiplier, 2)
+        self.assertEqual(board.grid[12][6].multiplier, 2)
+        self.assertEqual(board.grid[12][8].multiplier, 2)
+        self.assertEqual(board.grid[14][3].multiplier, 2)
+        self.assertEqual(board.grid[14][11].multiplier, 2)
+
     def test_word_inside_board_horizontal(self):
         board = Board()
         word = "Facultad"
@@ -211,7 +280,80 @@ class TestBoard(unittest.TestCase):
 
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
+    #TEST DE PALABRAS EN V Y EN H
+    def test_insert_horizontal(self):
+        board = Board()
+        word = "VENENO"
+        location = (8, 8)
+        orientation = "H"
+        board.insert(word, location, orientation)
+        # Verifica que las letras de "VENENO" se insertaron horizontalmente en (8, 8).
+        self.assertEqual(board.grid[8][8].letter.letter, "V")
+        self.assertEqual(board.grid[8][9].letter.letter, "E")
+        self.assertEqual(board.grid[8][10].letter.letter, "N")
+        self.assertEqual(board.grid[8][11].letter.letter, "E")
+        self.assertEqual(board.grid[8][12].letter.letter, "N")
+        self.assertEqual(board.grid[8][13].letter.letter, "O")
+    
+    def test_insert_vertical(self):
+        board = Board()
+        word = "VENENO"
+        location = (8, 8)
+        orientation = "V"
+        board.insert(word, location, orientation)
+        # Verifica que las letras de "VENENO" se insertaron verticalmente en (8, 8).
+        self.assertEqual(board.grid[8][8].letter.letter, "V")
+        self.assertEqual(board.grid[9][8].letter.letter, "E")
+        self.assertEqual(board.grid[10][8].letter.letter, "N")
+        self.assertEqual(board.grid[11][8].letter.letter, "E")
+        self.assertEqual(board.grid[12][8].letter.letter, "N")
+        self.assertEqual(board.grid[13][8].letter.letter, "O")
 
+    def test_converter_word_special_CHOCOLATE(self):
+        board = Board()
+        list_tiles = board.board_string_to_tiles("CHOCOLATE")
+        self.assertEqual(list_tiles[0].letter, "CH")
+        self.assertEqual(list_tiles[0].value, 5)  
+        self.assertEqual(list_tiles[1].letter, "O")
+        self.assertEqual(list_tiles[1].value, 1)
+        self.assertEqual(list_tiles[2].letter, "C")
+        self.assertEqual(list_tiles[2].value, 2)  
+        self.assertEqual(list_tiles[3].letter, "O")
+        self.assertEqual(list_tiles[3].value, 1)
+        self.assertEqual(list_tiles[4].letter, "L")
+        self.assertEqual(list_tiles[4].value, 1)
+        self.assertEqual(list_tiles[5].letter, "A")
+        self.assertEqual(list_tiles[5].value, 1)
+        self.assertEqual(list_tiles[6].letter, "T")
+        self.assertEqual(list_tiles[6].value, 1)
+        self.assertEqual(list_tiles[7].letter, "E")
+        self.assertEqual(list_tiles[7].value, 1)
+
+    def test_converter_word_special_LLANTO(self):
+        board = Board()
+        list_tiles = board.board_string_to_tiles("LLANTO")
+        self.assertEqual(list_tiles[0].letter, "LL")
+        self.assertEqual(list_tiles[0].value, 8)
+        self.assertEqual(list_tiles[1].letter, "A")
+        self.assertEqual(list_tiles[1].value, 1)
+        self.assertEqual(list_tiles[2].letter, "N")
+        self.assertEqual(list_tiles[2].value, 1)
+        self.assertEqual(list_tiles[3].letter, "T")
+        self.assertEqual(list_tiles[3].value, 1)
+        self.assertEqual(list_tiles[4].letter, "O")
+        self.assertEqual(list_tiles[4].value, 1)
+        
+    def test_converter_word_special_TARRO(self):
+        board = Board()
+        list_tiles = board.board_string_to_tiles("TARRO")
+        self.assertEqual(list_tiles[0].letter, "T")
+        self.assertEqual(list_tiles[0].value, 1)  
+        self.assertEqual(list_tiles[1].letter, "A")
+        self.assertEqual(list_tiles[1].value, 1)
+        self.assertEqual(list_tiles[2].letter, "RR")
+        self.assertEqual(list_tiles[2].value, 8)
+        self.assertEqual(list_tiles[3].letter, "O")
+        self.assertEqual(list_tiles[3].value, 1)  
 
 class TestCalculateWordValue(unittest.TestCase):
     def test_simple(self):

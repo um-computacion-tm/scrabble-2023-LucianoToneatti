@@ -7,6 +7,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4] - 2023-10-10
+
+### Added
+
+A new method called "insert" was implemented in the Board class, which takes three arguments, 'word', 'location' and 'orientation' and allows you to place a word on the game board.
+
+## [0.2.3] - 2023-10-08
+
+### Added
+
+In this commit, a new method called scrabble_word_calculate_score has been added to the Scrabble class. This method allows you to calculate the score of a word in the Scrabble game, considering the values ​​of the letters and the multipliers of the squares on the board. (X3 multipliers do not work yet).
+
+I'm trying to create a test to cover "def scrabble string_to_table" but I still can't get it to cover it correctly.
+
+## [0.2.2] - 2023-10-07
+
+### Added
+
+In this commit, a new method has been added to convert a text string into a Scrabble tile list. This method has the ability to handle special letters such as 'CH,' 'LL,' and 'Ñ,' assigning them their corresponding values according to the game rules.This simplifies the conversion of words containing these special letters into playable Scrabble tiles.
+
+## [0.2.1] - 2023-10-04
+
+### Added
+
+Added two methods to the Scrabble class:
+Scrabble_validate_word – This method validates whether a word can be placed on the board in a specific location and orientation.
+Scrabble_string_to_tiles - This method takes an input string and converts it to a list of Scrabble tiles, using a set of tiles available in the game's tile pool.
+
+And create the tests for both methods.
+
+## [0.2.0] - 2023-10-03
+
+### Added
+
+Added a method named "contains" to the "Player" class to check if a player has the necessary tiles to form a set of tiles.
+It also verifies whether the player has access to the tile bag and whether the tiles are available.
+This version provides a crucial functionality for verifying tile availability and is essential for the game.
+
+###Change
+
+When adding this new method, I decided to comment out these "get_tiles" and "exchange_tiles" methods for the time being.
+
+## [0.1.9] - 2023-10-02
+
+###  Added
+
+Added a new method for the "Board" class called "put_multipliers".
+And also the board itself with its cell multipliers in their corresponding places.
 
 ## [0.1.8] - 2023-09-27
 
