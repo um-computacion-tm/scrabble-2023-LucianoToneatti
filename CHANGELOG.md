@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4] - 2023-10-10
+
+### Added
+
+A new method called "insert" was implemented in the Board class, which takes three arguments, 'word', 'location' and 'orientation' and allows you to place a word on the game board.
+
 ## [0.2.3] - 2023-10-08
 
 ### Added

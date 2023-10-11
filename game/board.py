@@ -1,4 +1,6 @@
 from game.cell import Cell
+from game.models import BagTiles
+from game.models import Tile
 
 class Board:
     def __init__(self):
@@ -122,3 +124,33 @@ class Board:
                 return self.validate_word_horizontal(word, location, orientation)
              else:
                 return self.validate_word_vertical(word, location, orientation)
+             
+    def insert(self, word, location, orientation):
+        list_word = self.board_string_to_tiles(word)
+        column = location[0]
+        row = location[1]
+        i = 0
+        for _ in list_word:
+            self.grid[column][row].letter = list_word[i]
+            if orientation == "H":
+                row += 1
+                i += 1
+            elif orientation == "V":
+                column += 1
+                i += 1
+    
+    def board_string_to_tiles(self, input_string):
+        bag = BagTiles()
+        tiles_list = []
+        special_letters = {"RR": 8, "LL": 8, "CH": 5}
+        i = 0
+        while i < len(input_string):
+            letter = input_string[i]
+            if i < len(input_string) - 1 and input_string[i:i+2] in special_letters:
+                special_letter = input_string[i:i+2]
+                tiles_list.append(Tile(letter=special_letter, value=special_letters[special_letter]))
+                i += 2
+            else:
+                tiles_list.append(next(tile for tile in bag.tiles if tile.letter == letter.upper()))
+                i += 1
+        return tiles_list
