@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.6] - 2023-10-17
+
+### Added
+
+I moved the 'def string_to_tiles' from scrabble.py to board.py (along with its test) because I believe it's more organized this way. I also created a set of letters, 'letter_set,' to improve letter lookup instead of iterating through all the tiles in the bag.
+I will soon add more tests for these new functions.
+
 ## [0.2.5] - 2023-10-11
 
 ### Fixed

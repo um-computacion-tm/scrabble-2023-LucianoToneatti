@@ -45,21 +45,6 @@ class TestScrabble(unittest.TestCase):
         result = game.scrabble_validate_word("PYTHON", (0, 0), "H")
         self.assertEqual(result, True)  
 
-    def test_scrabble_string_to_tiles(self):
-        expected_tiles_data = [
-            ('P', 2),
-            ('Y', 4),
-            ('T', 1),
-            ('H', 4),
-            ('O', 1),
-            ('N', 1)
-        ]
-        expected_tiles = [Tile(letter=letter, value=value) for letter, value in expected_tiles_data]
-        game = Scrabble(2)  
-        result = game.scrabble_string_to_tiles("PYTHON")
-        self.assertEqual([tile.letter for tile in result], [tile.letter for tile in expected_tiles])
-        self.assertEqual([tile.value for tile in result], [tile.value for tile in expected_tiles])
-
     def test_calculate_score_word_with_single_letter(self):
         game = Scrabble(2)
         # Define una palabra que contiene una única letra 'A' en una casilla con multiplicador de palabra 1 y valor de letra 1.

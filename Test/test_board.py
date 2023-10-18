@@ -270,35 +270,7 @@ class TestBoard(unittest.TestCase):
         orientation = "V"
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
-    #TEST DE PALABRAS EN V Y EN H
-    """def test_insert_horizontal(self):
-        board = Board()
-        word = "VENENO"
-        location = (8, 8)
-        orientation = "H"
-        board.insert(word, location, orientation)
-        # Verifica que las letras de "VENENO" se insertaron horizontalmente en (8, 8).
-        self.assertEqual(board.grid[8][8].letter.letter, "V")
-        self.assertEqual(board.grid[8][9].letter.letter, "E")
-        self.assertEqual(board.grid[8][10].letter.letter, "N")
-        self.assertEqual(board.grid[8][11].letter.letter, "E")
-        self.assertEqual(board.grid[8][12].letter.letter, "N")
-        self.assertEqual(board.grid[8][13].letter.letter, "O")
-    
-    def test_insert_vertical(self):
-        board = Board()
-        word = "VENENO"
-        location = (8, 8)
-        orientation = "V"
-        board.insert(word, location, orientation)
-        # Verifica que las letras de "VENENO" se insertaron verticalmente en (8, 8).
-        self.assertEqual(board.grid[8][8].letter.letter, "V")
-        self.assertEqual(board.grid[9][8].letter.letter, "E")
-        self.assertEqual(board.grid[10][8].letter.letter, "N")
-        self.assertEqual(board.grid[11][8].letter.letter, "E")
-        self.assertEqual(board.grid[12][8].letter.letter, "N")
-        self.assertEqual(board.grid[13][8].letter.letter, "O")
-        """
+    ###TEST DE PALABRAS EN V Y EN H
     def check_word_insertion(self, board, word, location, orientation):
         board.insert(word, location, orientation)
         self.assertEqual(board.grid[location[0]][location[1]].letter.letter, word[0])
@@ -321,9 +293,7 @@ class TestBoard(unittest.TestCase):
         location = (8, 8)
         orientation = "V"
         self.check_word_insertion(board, word, location, orientation)
-
-
-
+    ###
     def test_converter_word_special_CHOCOLATE(self):
         board = Board()
         list_tiles = board.board_string_to_tiles("CHOCOLATE")
@@ -369,6 +339,22 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(list_tiles[2].value, 8)
         self.assertEqual(list_tiles[3].letter, "O")
         self.assertEqual(list_tiles[3].value, 1)  
+
+    def test_scrabble_string_to_tiles(self):
+        expected_tiles_data = [
+            ('P', 2),
+            ('Y', 4),
+            ('T', 1),
+            ('H', 4),
+            ('O', 1),
+            ('N', 1)
+        ]
+        expected_tiles = [Tile(letter=letter, value=value) for letter, value in expected_tiles_data]
+        board = Board()  
+        result = board.board_string_to_tiles("PYTHON")
+        self.assertEqual([tile.letter for tile in result], [tile.letter for tile in expected_tiles])
+        self.assertEqual([tile.value for tile in result], [tile.value for tile in expected_tiles])
+
 
 class TestCalculateWordValue(unittest.TestCase):
     def test_simple(self):

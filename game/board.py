@@ -106,7 +106,6 @@ class Board:
             self.check_right_letters(actual_tile, word[i], found_letter)
         return self.check_conditions(found_letter, word, location, orientation)
 
-
     def validate_word_vertical(self, word, location, orientation):
         column = location[0]
         row = location[1]
@@ -154,3 +153,11 @@ class Board:
                 tiles_list.append(next(tile for tile in bag.tiles if tile.letter == letter.upper()))
                 i += 1
         return tiles_list
+
+    def string_to_tiles(self, input_string, list):
+        bag = BagTiles()
+        letter_set = set(tile.letter for tile in bag.tiles)
+        for letter in input_string.upper():
+            if letter in letter_set:
+                matching_tile = next(tile for tile in bag.tiles if tile.letter == letter)
+                list.append(matching_tile)
