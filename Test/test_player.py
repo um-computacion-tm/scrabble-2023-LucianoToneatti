@@ -86,5 +86,10 @@ class TestPlayer(unittest.TestCase):
         is_valid = player.contains_letters(tiles)
         self.assertEqual(is_valid, False)
 
+    def test_display_rack(self):
+        player = Player()
+        player.rack = [Tile('A', 1), Tile('B',3), Tile('C',2)]
+        self.assertEqual(player.display_rack(), "[A] [B] [C]")
+
 if __name__ == '__main__':
     unittest.main()

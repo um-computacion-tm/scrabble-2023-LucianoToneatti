@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.7] - 2023-10-18
+
+### Added
+
+A new file and its class called "Several" has been added. In this class, everything that is not highly complementary to your previous classes is included.
+
+### Change
+
+Move 8 methods from the "board" class to the "Several" class and its tests.
+
 ## [0.2.6] - 2023-10-17
 
 ### Added

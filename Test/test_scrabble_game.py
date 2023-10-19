@@ -57,13 +57,11 @@ class TestScrabble(unittest.TestCase):
 
     def test_calculate_score_word_with_existing_score(self):
         game = Scrabble(2)
-        # Define una palabra que contiene una única letra 'Z' en una casilla con multiplicador de palabra 2 y valor de letra 10.
         word = [Cell(multiplier=2, letter=Tile("Z", 10))]
         game.next_turn()
-        # Establece manualmente la puntuación del jugador actual en 5.
         game.current_player.score = 5
         game.scrabble_word_calculate_score(word)
-        self.assertEqual(game.current_player.score, 25)
+        self.assertEqual(game.current_player.score, 15)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,7 @@
 from game.board import Board
 from game.player import Player
 from game.models import BagTiles
+from game.several import Several
 import uuid
 
 class Scrabble:
@@ -32,10 +33,6 @@ class Scrabble:
         return self.board.validate_word_inside_board(word, location, orientation)
    
     def scrabble_word_calculate_score(self, word):
-        total_score = 0
-        for cell in word:
-            tile = cell.letter
-            tile_value = tile.value
-            cell_multiplier = cell.multiplier
-            total_score += tile_value * cell_multiplier
-        self.current_player.score += total_score
+        sev = Several()
+        score = sev.calculate_word_value(word)
+        self.current_player.score += score

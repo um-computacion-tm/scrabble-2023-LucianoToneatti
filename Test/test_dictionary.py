@@ -2,10 +2,6 @@ import unittest
 from game.dictionary import Dictionary
 
 class TestDictionary(unittest.TestCase):
-    def test_dictionary_accents(self):
-        dic = Dictionary()
-        word = "Diversión"
-        self.assertEqual(dic.accents(word), "Diversion")
     def test_simple_verify(self):
         dic = Dictionary()
         word = "Banana"
