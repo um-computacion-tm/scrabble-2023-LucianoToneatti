@@ -58,3 +58,42 @@ class Several():
                 return 0
         else:
             return
+     ###
+    def format_placed_word_cell(self, cell):
+        return f" {cell.letter.letter} "
+
+    def format_active_cell(self, cell):
+        if cell.status == 'active':
+            return self.format_cell_contents(cell)
+
+    def format_cell_contents(self, cell):
+        if cell.letter is None:
+            return self.format_multiplier(cell.multiplier, cell.multiplier_type)
+        else:
+            return self.format_placed_word_cell(cell)
+
+    def format_multiplier(self, multiplier, multiplier_type):
+        if multiplier_type == 'word':
+            return f"{multiplier}W "
+        elif multiplier_type == 'letter':
+            return f"{multiplier}L "
+        else:
+            return " - "
+
+    def deactivate_cell(self, cell):
+        cell.status = 'desactive'
+
+    def converter_locations_to_positions(self, word, location, orientation):
+        positions = []
+        column = location[0]
+        row = location[1]
+        for _ in word:
+            positions.append((column, row))
+            if orientation == "H":
+                row += 1
+            elif orientation == "V":
+                column += 1
+        return positions
+    ###   
+
+    

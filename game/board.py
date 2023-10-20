@@ -113,4 +113,18 @@ class Board:
                 column += 1
                 i += 1
     
-    
+    def presentation_board(self, positions=None):
+        for row_index, row in enumerate(self.grid):
+            row_str = self.generate_row_string(row, positions, row_index) 
+        print(row_str)  
+
+    def generate_row_string(self, row, positions, row_index):
+        sev = Several()
+        row_str = ""
+        for col_index, cell in enumerate(row):
+            if positions is not None and (col_index, row_index) in positions:
+                row_str += sev.format_placed_word_cell(cell)
+                sev.deactivate_cell(cell)
+            else:
+                row_str += sev.format_active_cell(cell)
+        return row_str

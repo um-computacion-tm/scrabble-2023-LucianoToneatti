@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.8] - 2023-10-19
+
+### Added
+
+Added a new method for the "Board" class called "presentation_board" which will show the board to the player and "generate_row_string" which helps him.
+New methods for the "Several" class.
+
 ## [0.2.7] - 2023-10-18
 
 ### Added

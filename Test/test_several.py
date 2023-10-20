@@ -127,3 +127,61 @@ class TestSeveral(unittest.TestCase):
         expected_letters = set("HELLO")
         for tile in result_list:
             self.assertTrue(tile.letter in expected_letters)
+
+    ###
+    def test_format_placed_word_cell(self):
+        sev = Several()
+        cell = Cell(letter=Tile("T", 1))
+        result = sev.format_placed_word_cell(cell)
+        self.assertEqual(result, " T ")
+
+    def test_format_active_cell(self):
+        sev = Several()
+        active_cell = Cell(status='active')
+        inactive_cell = Cell(status='inactive')
+
+        result_active = sev.format_active_cell(active_cell)
+        result_inactive = sev.format_active_cell(inactive_cell)
+
+        self.assertIsNone(result_inactive)  # Celda inactiva no debe tener resultado
+        self.assertIsNotNone(result_active)  # Celda activa debe tener resultado
+
+    def test_format_cell_contents(self):
+        sev = Several()
+        cell_with_letter = Cell(letter=Tile("T", 1))
+        cell_without_letter = Cell()
+
+        result_with_letter = sev.format_cell_contents(cell_with_letter)
+        result_without_letter = sev.format_cell_contents(cell_without_letter)
+
+        self.assertEqual(result_with_letter, " T ")
+        self.assertEqual(result_without_letter, " - ")
+
+    def test_format_multiplier(self):
+        sev = Several()
+        word_multiplier = sev.format_multiplier(2, 'word')
+        letter_multiplier = sev.format_multiplier(3, 'letter')
+        unknown_multiplier = sev.format_multiplier(4, 'unknown')
+
+        self.assertEqual(word_multiplier, "2W ")
+        self.assertEqual(letter_multiplier, "3L ")
+        self.assertEqual(unknown_multiplier, " - ")
+
+    def test_deactivate_cell(self):
+        sev = Several()
+        cell = Cell()
+        sev.deactivate_cell(cell)
+        self.assertEqual(cell.status, 'desactive')
+
+    def test_converter_locations_to_positions(self):
+        sev = Several()
+        word = "WORD"
+        location = (2, 3)
+        orientation = "H"
+
+        result = sev.converter_locations_to_positions(word, location, orientation)
+        expected_positions = [(2, 3), (2, 4), (2, 5), (2, 6)]
+
+        self.assertEqual(result, expected_positions)
+
+    ###

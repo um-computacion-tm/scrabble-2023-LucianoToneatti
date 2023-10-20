@@ -1,6 +1,7 @@
 import unittest
 from game.board import Board
 from game.models import Tile
+from game.cell import Cell
 
 class TestBoard(unittest.TestCase):
     def test_board(self):
@@ -291,6 +292,24 @@ class TestBoard(unittest.TestCase):
         orientation = "V"
         self.check_word_insertion(board, word, location, orientation)
     ###
+
+    def test_generate_row_string_with_positions(self):
+        board = Board()
+        row = [Cell(letter=Tile("T",1)), Cell(letter=Tile("U",1))]
+        positions = [(0, 0), (1, 0)] 
+        row_index = 0
+        result = board.generate_row_string(row, positions, row_index)
+        self.assertEqual(result.strip(), 'T  U')
+
+    def test_generate_row_string_without_positions(self):
+        board = Board()
+        row = [Cell(), Cell()]
+        positions = None
+        row_index = 0
+        result = board.generate_row_string(row, positions, row_index)
+        self.assertEqual(result.strip(), '-  -')
+
+
  
 if __name__ == '__main__':
     unittest.main()
