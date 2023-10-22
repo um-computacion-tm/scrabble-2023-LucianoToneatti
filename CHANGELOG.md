@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.9] - 2023-10-21
+
+### Added
+
+In this update, I focused on improving the "Player" class and redesigned almost its entire code:
+*Replaced the list self.tiles with self.rack to represent the tiles in the player's rack.
+*Added the get_tiles method to obtain tiles from the "bag" and place them in the player's rack.
+*Introduced the exchange_tiles method to facilitate the exchange of tiles between the player's rack and the "bag."
+*Introduced the has_letters method to check if certain tiles are present in the player's rack.
+*Introduced the id attribute to uniquely identify the player.
+
+### Change
+
+Contains_letters - This method was removed.
+Get_tiles - This method was added to obtain tiles from the "bag" and place them in the player's rack.
+Exchange_tiles - This method was introduced to facilitate the exchange of tiles between the player's rack and the "bag."
+Has_letters - This method was added to check if certain tiles are present in the player's rack.
+
 ## [0.2.8] - 2023-10-19
 
 ### Added

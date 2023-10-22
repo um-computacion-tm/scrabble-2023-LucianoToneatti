@@ -94,6 +94,3 @@ class Several():
             elif orientation == "V":
                 column += 1
         return positions
-    ###   
-
-    
