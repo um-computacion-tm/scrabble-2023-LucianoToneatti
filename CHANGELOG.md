@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2023-10-22
+
+### Added
+In the Scrabble class:
+*Functions were added to display the board, scores, rack contents, and the number of remaining tiles in the bag.
+*Functions were implemented to place words on the board, shuffle tiles in the rack, and determine if the game has ended.
+*A function was added to place initial tiles in the bag.
+    
+In the Several class:
+*A function called converter_word_to_cells was added to convert a word into cells on a game board.
+
+In addition to creating and modifying the tests for these two classes.
+
 ## [0.2.9] - 2023-10-21
 
 ### Added

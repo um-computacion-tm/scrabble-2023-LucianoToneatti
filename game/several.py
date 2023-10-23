@@ -94,3 +94,17 @@ class Several():
             elif orientation == "V":
                 column += 1
         return positions
+    ###
+    def converter_word_to_cells(self, word, location, orientation, board):
+        list_tiles = self.board_string_to_tiles(word)
+        positions = self.converter_locations_to_positions(word, location, orientation)
+        list_cell = []
+        for i in range(len(word)):
+            tile = list_tiles[i]
+            position = positions[i]
+            column, row = position
+            cell = board.grid[column][row]
+            cell.add_letter(tile)
+            list_cell.append(cell)
+        return list_cell
+    ###

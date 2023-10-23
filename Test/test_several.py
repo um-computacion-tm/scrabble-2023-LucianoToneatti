@@ -2,6 +2,7 @@ import unittest
 from game.several import Several
 from game.cell import Cell
 from game.models import Tile
+from game.board import Board
 
 class TestSeveral(unittest.TestCase):
     
