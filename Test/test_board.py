@@ -19,7 +19,6 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.grid[14][0].multiplier, 3)
         self.assertEqual(board.grid[14][7].multiplier, 3)
         self.assertEqual(board.grid[14][14].multiplier, 3)
-        #
         self.assertEqual(board.grid[1][1].multiplier, 2)
         self.assertEqual(board.grid[2][2].multiplier, 2)
         self.assertEqual(board.grid[3][3].multiplier, 2)
@@ -51,7 +50,6 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board.grid[9][13].multiplier, 3)
         self.assertEqual(board.grid[13][5].multiplier, 3)
         self.assertEqual(board.grid[13][9].multiplier, 3)
-        #
         self.assertEqual(board.grid[0][3].multiplier, 2)
         self.assertEqual(board.grid[0][11].multiplier, 2)
         self.assertEqual(board.grid[2][6].multiplier, 2)
@@ -165,7 +163,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (8, 4)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == True
 
@@ -178,7 +175,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (8, 3)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -191,7 +187,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (4, 8)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == True
 
@@ -204,7 +199,6 @@ class TestBoard(unittest.TestCase):
         word = "Hola"
         location = (3, 8)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
 
@@ -229,10 +223,8 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (7,5)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
-        assert word_is_valid == True
-
+        assert word_is_valid == True    
     def test_place_word_no_empthy_2_coincidence_horizontal_wrong(self):
         board = Board()
         board.grid[7][7].add_letter(Tile('C',1))
@@ -245,10 +237,8 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (7,5)
         orientation = "H"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
-        assert word_is_valid == False
-
+        assert word_is_valid == False    
     def test_place_word_no_empthy_2_coincidence_vertical_fine(self):
         board = Board()
         board.grid[7][7].add_letter(Tile('C',1))
@@ -261,10 +251,8 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (5,7)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
-        assert word_is_valid == False
-
+        assert word_is_valid == False    
     def test_place_word_no_empthy_2_coincidence_vertical_wrong(self):
         board = Board()
         board.grid[7][7].add_letter(Tile('C',1))
@@ -277,135 +265,51 @@ class TestBoard(unittest.TestCase):
         word = "Foca"
         location = (5,7)
         orientation = "V"
-
         word_is_valid = board.validate_word_place_board(word, location, orientation)
         assert word_is_valid == False
-    #TEST DE PALABRAS EN V Y EN H
+
+    ###TEST DE PALABRAS EN V Y EN H
+    def check_word_insertion(self, board, word, location, orientation):
+        board.insert(word, location, orientation)
+        self.assertEqual(board.grid[location[0]][location[1]].letter.letter, word[0])
+        for i in range(1, len(word)):
+            if orientation == "H":
+                self.assertEqual(board.grid[location[0]][location[1] + i].letter.letter, word[i])
+            else:
+                self.assertEqual(board.grid[location[0] + i][location[1]].letter.letter, word[i])
+
     def test_insert_horizontal(self):
         board = Board()
         word = "VENENO"
         location = (8, 8)
         orientation = "H"
-        board.insert(word, location, orientation)
-        # Verifica que las letras de "VENENO" se insertaron horizontalmente en (8, 8).
-        self.assertEqual(board.grid[8][8].letter.letter, "V")
-        self.assertEqual(board.grid[8][9].letter.letter, "E")
-        self.assertEqual(board.grid[8][10].letter.letter, "N")
-        self.assertEqual(board.grid[8][11].letter.letter, "E")
-        self.assertEqual(board.grid[8][12].letter.letter, "N")
-        self.assertEqual(board.grid[8][13].letter.letter, "O")
-    
+        self.check_word_insertion(board, word, location, orientation)
+
     def test_insert_vertical(self):
         board = Board()
         word = "VENENO"
         location = (8, 8)
         orientation = "V"
-        board.insert(word, location, orientation)
-        # Verifica que las letras de "VENENO" se insertaron verticalmente en (8, 8).
-        self.assertEqual(board.grid[8][8].letter.letter, "V")
-        self.assertEqual(board.grid[9][8].letter.letter, "E")
-        self.assertEqual(board.grid[10][8].letter.letter, "N")
-        self.assertEqual(board.grid[11][8].letter.letter, "E")
-        self.assertEqual(board.grid[12][8].letter.letter, "N")
-        self.assertEqual(board.grid[13][8].letter.letter, "O")
+        self.check_word_insertion(board, word, location, orientation)
+    ###
 
-    def test_converter_word_special_CHOCOLATE(self):
+    def test_generate_row_string_with_positions(self):
         board = Board()
-        list_tiles = board.board_string_to_tiles("CHOCOLATE")
-        self.assertEqual(list_tiles[0].letter, "CH")
-        self.assertEqual(list_tiles[0].value, 5)  
-        self.assertEqual(list_tiles[1].letter, "O")
-        self.assertEqual(list_tiles[1].value, 1)
-        self.assertEqual(list_tiles[2].letter, "C")
-        self.assertEqual(list_tiles[2].value, 2)  
-        self.assertEqual(list_tiles[3].letter, "O")
-        self.assertEqual(list_tiles[3].value, 1)
-        self.assertEqual(list_tiles[4].letter, "L")
-        self.assertEqual(list_tiles[4].value, 1)
-        self.assertEqual(list_tiles[5].letter, "A")
-        self.assertEqual(list_tiles[5].value, 1)
-        self.assertEqual(list_tiles[6].letter, "T")
-        self.assertEqual(list_tiles[6].value, 1)
-        self.assertEqual(list_tiles[7].letter, "E")
-        self.assertEqual(list_tiles[7].value, 1)
+        row = [Cell(letter=Tile("T",1)), Cell(letter=Tile("U",1))]
+        positions = [(0, 0), (1, 0)] 
+        row_index = 0
+        result = board.generate_row_string(row, positions, row_index)
+        self.assertEqual(result.strip(), 'T  U')
 
-    def test_converter_word_special_LLANTO(self):
+    def test_generate_row_string_without_positions(self):
         board = Board()
-        list_tiles = board.board_string_to_tiles("LLANTO")
-        self.assertEqual(list_tiles[0].letter, "LL")
-        self.assertEqual(list_tiles[0].value, 8)
-        self.assertEqual(list_tiles[1].letter, "A")
-        self.assertEqual(list_tiles[1].value, 1)
-        self.assertEqual(list_tiles[2].letter, "N")
-        self.assertEqual(list_tiles[2].value, 1)
-        self.assertEqual(list_tiles[3].letter, "T")
-        self.assertEqual(list_tiles[3].value, 1)
-        self.assertEqual(list_tiles[4].letter, "O")
-        self.assertEqual(list_tiles[4].value, 1)
-        
-    def test_converter_word_special_TARRO(self):
-        board = Board()
-        list_tiles = board.board_string_to_tiles("TARRO")
-        self.assertEqual(list_tiles[0].letter, "T")
-        self.assertEqual(list_tiles[0].value, 1)  
-        self.assertEqual(list_tiles[1].letter, "A")
-        self.assertEqual(list_tiles[1].value, 1)
-        self.assertEqual(list_tiles[2].letter, "RR")
-        self.assertEqual(list_tiles[2].value, 8)
-        self.assertEqual(list_tiles[3].letter, "O")
-        self.assertEqual(list_tiles[3].value, 1)  
+        row = [Cell(), Cell()]
+        positions = None
+        row_index = 0
+        result = board.generate_row_string(row, positions, row_index)
+        self.assertEqual(result.strip(), '-  -')
 
-class TestCalculateWordValue(unittest.TestCase):
-    def test_simple(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1)),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2)),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,5)
-    def test_with_letter_multiplayer(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1)),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='letter'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,7)
 
-    def test_with_word_multiplayer(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1)),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='word'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,10)
-    def test_with_word_and_letter_multiplayer(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1), multiplier=3, multiplier_type='letter'),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='word'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,14)
-    def test_with_word_and_letter_multiplayer_no_active(self):
-        board = Board()
-        word = [
-            Cell(letter=Tile('C',1), multiplier=3, multiplier_type='letter', status='desactive'),
-            Cell(letter=Tile('A',1)),
-            Cell(letter=Tile('S',2), multiplier=2, multiplier_type='word', status='desactive'),
-            Cell(letter=Tile('A',1))
-        ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value,5)
+ 
 if __name__ == '__main__':
     unittest.main()

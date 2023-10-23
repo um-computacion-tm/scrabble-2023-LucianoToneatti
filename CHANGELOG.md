@@ -7,6 +7,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2023-10-22
+
+### Added
+In the Scrabble class:
+*Functions were added to display the board, scores, rack contents, and the number of remaining tiles in the bag.
+*Functions were implemented to place words on the board, shuffle tiles in the rack, and determine if the game has ended.
+*A function was added to place initial tiles in the bag.
+    
+In the Several class:
+*A function called converter_word_to_cells was added to convert a word into cells on a game board.
+
+In addition to creating and modifying the tests for these two classes.
+
+## [0.2.9] - 2023-10-21
+
+### Added
+
+In this update, I focused on improving the "Player" class and redesigned almost its entire code:
+*Replaced the list self.tiles with self.rack to represent the tiles in the player's rack.
+*Added the get_tiles method to obtain tiles from the "bag" and place them in the player's rack.
+*Introduced the exchange_tiles method to facilitate the exchange of tiles between the player's rack and the "bag."
+*Introduced the has_letters method to check if certain tiles are present in the player's rack.
+*Introduced the id attribute to uniquely identify the player.
+
+### Change
+
+Contains_letters - This method was removed.
+Get_tiles - This method was added to obtain tiles from the "bag" and place them in the player's rack.
+Exchange_tiles - This method was introduced to facilitate the exchange of tiles between the player's rack and the "bag."
+Has_letters - This method was added to check if certain tiles are present in the player's rack.
+
+## [0.2.8] - 2023-10-19
+
+### Added
+
+Added a new method for the "Board" class called "presentation_board" which will show the board to the player and "generate_row_string" which helps him.
+New methods for the "Several" class.
+
+## [0.2.7] - 2023-10-18
+
+### Added
+
+A new file and its class called "Several" has been added. In this class, everything that is not highly complementary to your previous classes is included.
+
+### Change
+
+Move 8 methods from the "board" class to the "Several" class and its tests.
+
+## [0.2.6] - 2023-10-17
+
+### Added
+
+I moved the 'def string_to_tiles' from scrabble.py to board.py (along with its test) because I believe it's more organized this way. I also created a set of letters, 'letter_set,' to improve letter lookup instead of iterating through all the tiles in the bag.
+I will soon add more tests for these new functions.
+
+## [0.2.5] - 2023-10-11
+
+### Fixed
+
+All I did was fix a duplication issue in the board tests.
+
 ## [0.2.4] - 2023-10-10
 
 ### Added
