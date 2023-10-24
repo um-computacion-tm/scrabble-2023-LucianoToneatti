@@ -8,7 +8,7 @@ class TestScrabble(unittest.TestCase):
         scrabble_1 = Scrabble(3)
         self.assertIsNotNone(scrabble_1.board, None)
         self.assertEqual(len(scrabble_1.players),3)
-        self.assertEqual(scrabble_1.turn, 1)
+        self.assertEqual(scrabble_1.turn, 0)
     def test_unique_id(self):
         game_1 = Scrabble(1)
         game_2 = Scrabble(1)
@@ -27,9 +27,9 @@ class TestScrabble(unittest.TestCase):
         self.assertEqual(game.current_player, game.players[0])
     def test_next_turn(self):
         game = Scrabble(2)
-        self.assertEqual(game.turn, 1)
+        self.assertEqual(game.turn, 0)
         game.next_turn()
-        self.assertEqual(game.turn, 2)
+        self.assertEqual(game.turn, 1)
     def test_playing(self):
         game = Scrabble(1)
         self.assertEqual(game.playing(), True)
@@ -120,16 +120,17 @@ class TestScrabble(unittest.TestCase):
         self.assertEqual(len(game.players[0].rack), 0)
         self.assertEqual(len(game.players[1].rack), 0)
         game.next_turn()
+        game.next_turn()
         game.put_tiles_in_rack(1)
-        self.assertEqual(len(game.players[0].rack), 1)
-        self.assertEqual(len(game.players[1].rack), 0)
+        self.assertEqual(len(game.players[0].rack), 0)
+        self.assertEqual(len(game.players[1].rack), 1)
 
     def test_put_initial_tiles_bag(self):
         game = Scrabble(2)
         self.assertEqual(len(game.bag_tiles.tiles), 29)
         game.put_initial_tiles_bag()
         self.assertEqual(len(game.bag_tiles.tiles), 100)
-
+    ####
 
 if __name__ == '__main__':
     unittest.main()

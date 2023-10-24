@@ -13,9 +13,9 @@ class Scrabble:
         self.players = []
         self.gameid = str(uuid.uuid4())
         for index in range(players_count):
-            self.players.append(Player(id=index))
+            self.players.append(Player(id=index +1))
         self.current_player = None
-        self.turn = 1
+        self.turn = 0
         self.dic = Dictionary()
         self.grid = [[' ' for _ in range(15)] for _ in range(15)] 
 
@@ -45,25 +45,15 @@ class Scrabble:
         score = sev.calculate_word_value(new_word)
         self.current_player.score += score
     ###
-    def show_board(self, word=None, location=None, orientation=None):
+    def get_board(self):
         sev = Several()
-        if word is None and location is None and orientation is None:
-            self.board.presentation_board()
-        else:
-            positions = sev.converter_locations_to_positions(word, location, orientation)
-            self.board.presentation_board(positions)
-
+        return self.board
+    ###
     def show_rack(self):
         return self.current_player.display_rack()
 
     def put_word(self, word, location, orientation):
         self.board.insert(word, location, orientation)
-
-    def show_scores(self):
-        sorted_players = sorted(self.players, key=lambda player: player.score, reverse=True)
-        print("Puntajes de los jugadores:")
-        for _, player in enumerate(sorted_players, start=1):
-            print(f"Jugador {player.id}: Puntaje = {player.score}")
 
     def show_amount_tiles_bag(self):
         return len(self.bag_tiles.tiles)
@@ -78,9 +68,9 @@ class Scrabble:
 
     def put_tiles_in_rack(self, amount=7):
         bag = self.bag_tiles
-        if self.turn == 1:
+        if self.turn == 0:
             for i in range(len(self.players)):
-                self.players[i].get_tiles(amount, bag)
+                self.players[i].get_tiles(amount, bag)#get_tiles
         else:
             self.current_player.get_tiles(amount, bag)
 
