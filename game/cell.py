@@ -1,4 +1,5 @@
 from game.models import Tile
+from game.several import Several
 class Cell:
     def __init__(self, multiplier=1, multiplier_type='', letter=None, status='active'):
         self.multiplier = multiplier
@@ -15,3 +16,9 @@ class Cell:
         if self.multiplier_type == 'word':
             return self.letter.value
         
+    def __repr__(self):
+        sev = Several()
+        if self.status == "active":
+            return sev.format_active_cell(self)
+        else:
+            return sev.format_cell_contents(self)

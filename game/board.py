@@ -34,8 +34,6 @@ class Board:
         elif multiplier_type == "L":
             return Cell(multiplier=multiplier_value, multiplier_type="letter")
     
-   
-    
     def validate_word_inside_board(self,word, location, orientation):
         column = location[0]
         row = location[1]

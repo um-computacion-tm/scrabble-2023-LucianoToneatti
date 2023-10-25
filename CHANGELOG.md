@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2023-10-23
+
+### Added
+
+I have been working on the 'main' class, creating several functions, to be more specific, 11 in total. These functions improve the functionality and gaming experience for the player, allowing players to perform important actions during their turn and view their scores. Additionally, they display the state of the board and the game more legibly in the console.
+I also changed a couple of tests and added most of the tests for the new functions, although there are still some left to cover.
+
+In the 'Cell' class, I added a new method 'repr' that generates a textual representation for a cell. It is used to understand and debug the state of cells in the game.
+
 ## [0.3.0] - 2023-10-22
 
 ### Added

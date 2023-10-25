@@ -179,10 +179,8 @@ class TestSeveral(unittest.TestCase):
         word = "WORD"
         location = (2, 3)
         orientation = "H"
-
         result = sev.converter_locations_to_positions(word, location, orientation)
         expected_positions = [(2, 3), (2, 4), (2, 5), (2, 6)]
-
         self.assertEqual(result, expected_positions)
 
     ###
