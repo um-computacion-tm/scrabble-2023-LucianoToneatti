@@ -1,7 +1,7 @@
 [run]
 source =
     game
-    Test
+    tests
     main
 omit =
     env/*
